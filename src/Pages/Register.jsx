@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Register = () => {
 //const [data , setData] =useState("p")
-
+/*
   const onSubmit = async (values)=>{
    console.log(values);
 
@@ -57,7 +57,12 @@ console.log(responsive);
 
         </Form>
     </Formik>
-  );
+  );*/
+  return (
+    <h2>
+      register
+    </h2>
+  )
 }
 
 export default Register

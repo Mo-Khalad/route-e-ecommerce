@@ -9,7 +9,7 @@ import { TokenContext } from "../Store/TokenContext.js";
 const Login = () => {
   //const [data, setData] = useState("");
   //const [token , setToken] = useState("")
-  let {setUserToken} =  useContext(TokenContext)
+ /* let {setUserToken} =  useContext(TokenContext)
   let navigate = useNavigate();
   const onSubmit = async (values) => {
     console.log(values);
@@ -67,7 +67,10 @@ const Login = () => {
         </div>
       </Form>
     </Formik>
-  );
+  );*/
+  return (
+    <h2>login</h2>
+  )
 };
 
 export default Login;
