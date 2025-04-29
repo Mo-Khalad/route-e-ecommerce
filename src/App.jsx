@@ -1,15 +1,18 @@
 import { createBrowserRouter , RouterProvider } from 'react-router-dom';
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useRef }  from 'react'
 import Home from './Pages/Home.jsx'
 import Brands from './Pages/Brands.jsx';
 import Products from './Pages/Products.jsx';
 import Layout from './Components/Layout.jsx';
-import Cart from './Pages/Cart.jsx';
+import Cart from './Pages/Cart/Cart.jsx';
 import Categories from './Pages/Categories.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import DetailsProduct from './Pages/DetailsProduct.jsx';
-import TokenContextProvider from './Store/TokenContextProvider.jsx';
+import { CartContext } from './Store/CartContext.jsx';
+import { ToastContainer } from 'react-toastify';
+import CartContextProvider from './Store/CartContextProvider.jsx';
+
 
 const router = createBrowserRouter(
   [{path:'' , element:<Layout/> , children:[
@@ -24,18 +27,26 @@ const router = createBrowserRouter(
   {path:'/products/:id' , element:<DetailsProduct/>}
 ]}])
   
+
 const App = () => {
 
-  //console.log(process.env.REACT_APP_API_KEY)
+const { fetchCart } = useContext(CartContext)
+const callFetchCart =()=>{
+    fetchCart()
+}
+
+useEffect(() => {
+    callFetchCart();
+}, []);
 
   return (
     <>
-     <TokenContextProvider>
-     <RouterProvider router={router}/>      
-     </TokenContextProvider>
+     <RouterProvider router={router}/>   
+     <ToastContainer/>
     </>
   )
-     
+  
 }
+
 
 export default App

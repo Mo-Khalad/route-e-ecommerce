@@ -3,8 +3,8 @@ import { createContext } from "react";
 export const CartContext= createContext({
   items:[] ,
   addProductToCart:()=>{} , 
-  updateCartProductQuantity:()=>{},
+  updateProductInCart:()=>{},
   removeSpecificCartItem:()=>{} ,
-  clearUserCart:()=>{},
-  getCart:()=> {},
+  clearUserCartProducts:()=>{},
+  fetchCart:()=>{},
 }) 

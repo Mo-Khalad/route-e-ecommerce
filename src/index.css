@@ -1,6 +1,6 @@
-:root{
-  --main-color:rgb(40, 133, 4) ;
+:root{  
   --main-color:rgb(4, 86, 133) ;
+  --main-color:rgb(7, 14, 4) ;
 }
 *{
   margin: 0;
@@ -11,10 +11,17 @@
   text-decoration: none;  
   color: rgb(47, 56, 56); 
   color: aliceblue;
+  color: #0065a8;
+  color: var(--main-color);
+  color:#0065a8;
+  color: rgb(0, 145, 255);
+  color: #f5f3f3;
+
 }
 input{
   outline-style: none;
 }
+
 .main-btn{
   padding: 0.3rem 0.5rem;
   margin: 0.1rem 0.2rem;
@@ -28,6 +35,7 @@ input{
 }
 .main-btn:hover{
  background-color: rgb(21, 74, 95);
+ background-color: var(--main-color);
 }
 .cover-image{
   height:100vh;
@@ -40,9 +48,7 @@ input{
   bottom: 0;
   z-index: 9999999;
 }
-.form-content{
-  background-color: aquamarine;
-}
+
 label{
   display: block;  
 }
@@ -61,9 +67,9 @@ h2{
 }
 .active{
   color: var(--main-color) ;
-  color: aliceblue;
-  color: rgb(136, 184, 255);
   font-weight: 600;
+  color: var(--main-color);
+  color: #d9dddf;
 }
 
 li{
@@ -72,30 +78,19 @@ li{
 }
 
 
-.content-cart{
-  height: 4.5rem;
-  max-height:5rem;
-}
-
-.increment ,.decrement{
-  background-color: transparent;
-  border: 0;
-  font-size: 1.5rem;
-  color: rgb(173, 183, 192);
-}
-
-
-.svg-color{
-fill: rgb(53, 53, 248);
-}
-
 
 .w{
-  overflow:auto;
+overflow: auto
 }
 
 .n{
+  position: fixed;
+  z-index: 999;
   background-color: rgba(3, 8, 17, 0.897) !important;
+  background-color: #f6fcfa !important;
+  background-color: #030d18 !important;
+
+  box-shadow: 0.5px 0.5px 5px 0.5px #222;
 }
 .first{
   color: rgb(250, 133, 103);
@@ -107,9 +102,36 @@ border-radius: 1rem;
 box-shadow: 2px 2px 2px 2px #234;
 }
 
-m{
+.m{
   border-bottom-color: rgb(var(--wix-ui-tpa-divider-main-divider-color, var(--wix-color-37)));
     border-bottom-style: solid;
     border-width: 0 0 var(--wix-ui-tpa-divider-main-divider-width, 1px) 0;
     max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background: #f5f3f3;
+
+}
+::-webkit-scrollbar-thumb {
+  background: #444;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9dddf;
+  background-color:#0065a8;
+  color: var(--main-color);
+  background-color:#2a516b;
+  background-color: var(--main-color);
+}
+svg{
+cursor: pointer;
+}
+.text-items{
+  font-size: 3rem;
+}
+.cart-icon{
+  fill:#0065a8;
+  color: var(--main-color);
+  fill: #ffffff
 }
