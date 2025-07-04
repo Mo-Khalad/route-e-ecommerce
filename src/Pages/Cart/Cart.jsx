@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, {  useContext, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { CartContext } from "../../Store/CartContext";
 import { totalPriceProduct } from "../../Logic/Logic";
@@ -7,26 +7,46 @@ import { totalCartItems } from "../../Logic/Logic";
 import Button from "../../Components/Ui/Button";
 import Style from "./Cart.module.css";
 import CartItems from "./CartItems";
+import { Link } from "react-router-dom";
+import Loading from "../../Components/Loading";
 const Cart = () => {
   const [beforeUnloadEvent, setBeforeUnloadEvent] = useState("");
-
+  const [loading , setLoading] =useState(false)
   const {
     items,
     placeholder ,
     removeSpecificCartItem,
     updateProductInCart,
     clearUserCartProducts,
+    fetchCart
   } = useContext(CartContext);
-  const totalCart = totalCartItems(items);
 
+const totalCart = totalCartItems(items);
+const oldTotal = useRef( totalCart )
+
+if(!(oldTotal.current === totalCart)){
+  oldTotal.current ="put"
+}
+else if (oldTotal.current === totalCart){
+  oldTotal.current = totalCart
+}
+
+useEffect(()=>{
+    setLoading(true)
+    setTimeout( ()=>
+      {setLoading(false)} , [1000])
+} , [])
   useEffect(() => {
-    return () => {
+    return () => {      
       const callUpdateProductInCart = (type, method) => {
         updateProductInCart("", "", type, method);
-      };
-      callUpdateProductInCart("update", "put");
-    };
-  }, []);
+      };  
+        callUpdateProductInCart("update", oldTotal.current);
+        setTimeout(()=>{
+        fetchCart()    
+      } , callUpdateProductInCart)
+     } 
+  },  [ updateProductInCart , fetchCart , loading ]);
 
   useEffect(() => {
     if (
@@ -40,7 +60,9 @@ const Cart = () => {
       return () => window.removeEventListener("beforeunload", unloadCallback);
     }
   }, [beforeUnloadEvent]);
-
+    
+ if(!loading){
+  
   return (
     <div className={`${Style.cartCover}`}>
       <Container>
@@ -51,8 +73,11 @@ const Cart = () => {
             <div
               className={`${Style.cartItems} d-flex flex-wrap justify-content-between align-items-center w-100`}
             >
+              
               {(items.message !== "success") &&( items.length !== 0 )? (
                 items?.map((product) => {
+                  const notFound = product.product === undefined;
+
                   return (
                     <CartItems
                       product={product}
@@ -60,12 +85,11 @@ const Cart = () => {
                       setBeforeUnloadEvent={setBeforeUnloadEvent}
                       totalPriceProduct={totalPriceProduct}
                       removeSpecificCartItem={removeSpecificCartItem}
-                      key={product.id}
+                      key={notFound ? product.id : product.product.id}
                     />
                   );
                 })
               ) : (
-                ( placeholder!== "placeholder" ) &&
                 <h4 className="mt-5 m-auto"> cart is empty </h4>
               )}
 
@@ -93,9 +117,12 @@ const Cart = () => {
                 <li>Total</li>
                 <li>${totalPriceProducts(items)}</li>
               </ul>
-              <Button className={`${Style.checkOutBtn} p-2 w-100 border-0`}>
-                checkOut
-              </Button>
+             
+              <Link to={"../checkout"}>  
+               <button  disabled={items.length===0 ? true : false }  className={"checkout-btn"} to={"../checkout"}>
+                check out 
+               </button> </Link>
+          
               <h6 className="text-center mt-2">Secure Checkout</h6>
             </div>
           </Col>
@@ -103,6 +130,7 @@ const Cart = () => {
       </Container>
     </div>
   );
+} else return <Loading/>
 };
 
 export default Cart;

@@ -1,17 +1,13 @@
-import React, { useReducer, useRef, useState } from "react";
+import React, { useCallback , useReducer, useState } from "react";
 import { mainFormHandlerTypeRaw } from "../util/http";
 import { CartContext } from "./CartContext.jsx";
 import { toast } from "react-toastify";
-import { data } from "react-router-dom";
 
-let headers = {
-  token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YThiYjdmZmE3ODk1ZTgxZjM4MDM1OSIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ1MTU4OTYyLCJleHAiOjE3NTI5MzQ5NjJ9.pTeRyX3ITBqI6qkeEnYJjmT9VN2AuYbbjejFbmMYG-c",
-};
 const URL_CART = `api/v1/cart`;
 
-const handleProductReducer = (state, action) => {
-  if (action.type === "INIT_CART") {
+const handleProductReducer = (state , action) => {
+  
+  if (action.type === "INIT_CART") {    
     return { items: action.item };
   }
 
@@ -23,11 +19,9 @@ const handleProductReducer = (state, action) => {
         : item.id === action.item.id
     );
     if (existingCartItemIndex > -1) {
-      toast('The product is in the shopping cart ' , {type:"info" , theme: "dark" ,autoClose:1000});
 
     } else {
-      updateItems.push({ ...action.item, count: 1 });
-      toast("dded to cart product" , {type:"info" , theme: "dark" , autoClose:1000});
+      updateItems.push({ ...action.item , count: 1 });
     }
     return { ...state, items: updateItems };
   }
@@ -45,23 +39,21 @@ const handleProductReducer = (state, action) => {
     );
 
     if (action.type === "increment") {
-        toast("The number of products has been increased" , {type:"info" , theme: "dark" ,autoClose:1000})
       if (existingCartItemIndex > -1) {
         const existingItem = state.items[existingCartItemIndex];
         const updateItem = {
           ...existingItem,
           count: existingItem.count + 1,
-        };
+        };        
         updateItems[existingCartItemIndex] = updateItem;
       }
     }
     if (action.type === "decrement") {
+       
       const existingCartItem = state.items[existingCartItemIndex];
       if (existingCartItem.count === 1) {
-        toast("The product has been deleted" , {type:"info" , theme: "dark" ,autoClose:1000})
         updateItems.splice(existingCartItemIndex, 1);
       } else {
-        toast("The number of products has been decreased" , {type:"info" , theme: "dark" ,autoClose:1000})
         const existingItem = state.items[existingCartItemIndex];
         const updateItem = {
           ...existingItem,
@@ -78,26 +70,24 @@ const handleProductReducer = (state, action) => {
           product.product === undefined ? product.id : product.product.id
         } `,
         count: product.count,
-        token: { headers },
+        token: action.token ,
       })
     );
     return { ...state, items: updateItems };
   }
 
-  if (action.type === "REMOVE-ITEM") {
-    toast("The product has been deleted" , {type:"info" , theme: "dark" ,autoClose:1000})
+  if (action.type === "REMOVE-ITEM") {    
     const updateItems = [...state.items];
-    updateItems.splice(action.id, 1);
-   
+    updateItems.splice(action.id , 1);
+
     return { ...state, items: updateItems };
   }
 
   if (action.type === "REMOVE-ALL") {
-    toast("All items in the cart have been removed." , {type:"info" , theme: "dark" ,autoClose:1000})
     mainFormHandlerTypeRaw({
       method: "REMOVE-ALL-CART-ITEM",
       type: `${URL_CART}`,
-      token: { headers },
+      token:  action.token ,
     });
     return { ...state, items: [] };
   }
@@ -105,84 +95,95 @@ const handleProductReducer = (state, action) => {
 };
 
 const CartContextProvider = ({ children }) => {
-  const [cart, dispatchCartAction] = useReducer(handleProductReducer, {
+  const [token , setToken] = useState(JSON.parse( localStorage.getItem("token") ))
+  const [cart , dispatchCartAction] = useReducer( handleProductReducer, {
     items: [],
   });
-  const [placeholder , setPlaceholder]=useState("")
+  const [cart_id , setCart_id] = useState()
+  const [placeholder, setPlaceholder] = useState("");
 
-
-  const addProductToCart = async (item) => {
-    let indexProduct = cart.items.findIndex((cartItem) =>
-      cartItem.id === undefined
-        ? cartItem.product.id === item.id
-        : cartItem.id === item.id
-    );
-
-    dispatchCartAction({
-      type: "Add-ITEM",
-      item,
-    });
-
-    if (indexProduct === -1) {
-      return mainFormHandlerTypeRaw({
-        method: "post",
-        type: URL_CART,
-        fromData: item.id,
-        token: { headers },
-      });
-    }
+  const notifySuccess = (text) => {
+    toast.success(text);
   };
 
-  const updateProductInCart = (item, count, type, method) => {
+  const addProductToCart = async (item) => { 
+   if( token!== null ){    
+      let indexProduct = cart.items.findIndex((cartItem) =>
+        cartItem.id === undefined
+          ? cartItem.product.id === item.id
+          : cartItem.id === item.id
+      );
+      
+      dispatchCartAction({
+        type: "Add-ITEM",
+        item,
+        token
+      });
+      if (indexProduct === -1) {
+        notifySuccess("added successfully");
+        return mainFormHandlerTypeRaw({
+          method: "post",
+          type: URL_CART,
+          fromData: {productId:item.id},
+          token: token ,
+        });
+      }else notifySuccess("The item is in the shopping cart.");
+  }
+    else notifySuccess("Please log in")
+  };
+
+  const updateProductInCart = useCallback((item, count, type, method) => {
     dispatchCartAction({
       item,
       count,
       type,
       method,
+      token
     });
-  };
+  } ,[token] )
 
-  const removeSpecificCartItem =async (id) => {
-   
-    setPlaceholder("placeholder")
+  const removeSpecificCartItem = async (id) => {    
+    setPlaceholder("placeholder");
     dispatchCartAction({
       type: "REMOVE-ITEM",
       id,
     });
 
-   const data = await mainFormHandlerTypeRaw({
+    const data = await mainFormHandlerTypeRaw({
       method: "delete",
       type: `${URL_CART}/${id}`,
-      token: { headers },
+      token:  token,
     });
-    console.log(data.status);
-    if(data.status==="success"){      
-      setPlaceholder('')
+    
+    if (data?.data?.status === "success") {      
+      setPlaceholder("");
     }
   };
 
-  const fetchCart = async () => {
-    const { data } = await mainFormHandlerTypeRaw({
-      method: "get",
+  const fetchCart = useCallback(async()=>{    
+    const data = await mainFormHandlerTypeRaw({
+      method:token !== null  ? 'get' : '',
       type: URL_CART,
-      token: { headers },
-    });
+      token:  token ,
+    });    
+    setCart_id(data)
     dispatchCartAction({
       type: "INIT_CART",
-      item: data?.products || [],
+      item: data?.data?.data?.products || [],
     });
-  };
+  }, [token])
 
-  const clearUserCartProducts = () => {    
-    setPlaceholder("placeholder")
+  const clearUserCartProducts = () => {
+    setPlaceholder("placeholder");
     setTimeout(() => {
-      setPlaceholder('')
-    }, 3000);
+      setPlaceholder("");
+    }, 1000);
     dispatchCartAction({
       type: "REMOVE-ALL",
+      token
     });
   };
-
+  
   const cartCrx = {
     items: cart.items,
     addProductToCart,
@@ -191,6 +192,9 @@ const CartContextProvider = ({ children }) => {
     clearUserCartProducts,
     fetchCart,
     placeholder,
+    setToken ,
+    token ,
+    cart_id
   };
 
   return (

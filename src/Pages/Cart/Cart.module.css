@@ -13,7 +13,6 @@
 .productUpdateBtnsCover{
     box-shadow: 1px 0.5px 0.5px 0.2px #e0dcdc;
     border-radius:0.2rem;
-    background-color: #e6e6e6;
     background-color: #d9dddf81;
     width: 6rem;
     min-width: 6rem;
@@ -28,7 +27,7 @@
     transition: all 1s;
 }
 .incrementBtn:hover ,.decrementBtn:hover{
-  background-color: #d9dddf;
+  background-color:var(--sub-color);
   color:#030d18 ;
 }
 .svgColor{
@@ -36,14 +35,14 @@
 }
 .clearAllBtn{
     color: var(--main-color);
-    background-color: #d9dddf;
+    background-color:var(--sub-color);
     font-weight: 500;
     border-radius: 0.3rem;
     transition: 1s all;
 }
 .clearAllBtn:hover{
     background-color: var(--main-color);
-    color: #d9dddf;
+    color:var(--sub-color);
 }
 .OrderSummary{
     padding: 0.1rem;
@@ -52,14 +51,14 @@
 }
 .checkOutBtn{
     color: var(--main-color);
-    background-color: #d9dddf;
+    background-color:var(--sub-color);
     font-weight: 700;
     border-radius: 0.3rem;
     transition: 1s all;
 }
 .checkOutBtn:hover{
     background-color:var(--main-color);
-    color: #d9dddf;
+    color:var(--sub-color);
 }
 
 
