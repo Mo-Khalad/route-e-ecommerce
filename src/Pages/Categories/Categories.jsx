@@ -30,7 +30,7 @@ const Categories = () => {
                   data?.data?.data.map((product)=> (
                     <Col lg={3} md={4} sm={6} xs={6} key={product._id}>
                       <div
-                        className="my-3 content-categories p-3"
+                        className="my-3 card m-2"
                       >
                         <img
                           src={product.image}
@@ -44,7 +44,7 @@ const Categories = () => {
                             })
                           }
                         />
-                        <h5 className="ms-4">{product.name}</h5>
+                        <h5 className="ms-4 mt-3">{product.name}</h5>
                       </div>
                     </Col>
                   ))}

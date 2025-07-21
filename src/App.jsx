@@ -16,20 +16,21 @@ import CheckOut from "./Components/CheckOut.jsx";
 import Wishlist from "./Pages/Wishlist/Wishlist.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 
+
 const router = createBrowserRouter([
   {
     path: "",
     element: <Layout />,
-    errorElement: <NotFound/>,
+    //errorElement: <NotFound/>,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/brands", element: <Brands /> },
-      { path: "/products", element: <Products />},
-      { path: "/cart",  element: <Cart /> },
-      { path: "/categories", element: <Categories /> },
-      { path: "/products/:id", element: <DetailsProduct /> },
+      { path: "brands", element: <Brands />},
+      { path: "products", element: <Products />},
+      { path: "cart",  element: <Cart /> },
+      { path: "categories", element: <Categories /> },
+      { path: "products/:id", element: <DetailsProduct /> },
       { path: "checkout", element: <CheckOut /> },
-      { path:"Wishlist" , element:<Wishlist/>} , 
+      { path:"Wishlist" , element:<Wishlist/> ,} , 
       {
         path: "/login",
         element: (

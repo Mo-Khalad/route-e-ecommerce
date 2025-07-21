@@ -9,6 +9,7 @@ const CategoriesSlider = () => {
     <Col md={12} className="py-5">
       <HomeSlider
         slidesToShow={7}
+        slidesToScroll={5}
         lg={5}
         md={3}
         sm={2}

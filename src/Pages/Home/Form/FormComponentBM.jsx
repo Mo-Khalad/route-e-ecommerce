@@ -32,12 +32,12 @@ const FormComponentBM = (
       token,
     });
 
-    setTimeout(() => {
-      setMessage(responsive);
+    setMessage(responsive);
+
       setTimeout(() => {
         setMessage("");
-      }, [1000]);
-    }, [0]);
+      }, 3000);
+    
 
   if( token === undefined && url === "api/v1/auth/signin" ) {
       localStorage.setItem("token", JSON.stringify(responsive?.data.token));
@@ -60,7 +60,7 @@ const FormComponentBM = (
             <Form>
               {detailsInputs.map(({ name, type, label , autocomplete , ...props }, index) => {                
                 return (
-                  <div key={index}>
+                  <div key={index} className="position-relative">
                     {label !== undefined && (
                       <label htmlFor={name}>{label}</label>
                     )}
@@ -74,7 +74,7 @@ const FormComponentBM = (
                     />
                     <ErrorMessage name={name}>
                       {(errorMsg) => (
-                        <p style={{ color: "#962118" }}>{errorMsg}</p>
+                        <p style={{ color: "#962118", position:"absolute" , bottom:-20}}>{errorMsg}</p>
                       )}
                     </ErrorMessage>
                   </div>

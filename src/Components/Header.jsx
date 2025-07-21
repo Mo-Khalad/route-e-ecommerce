@@ -8,14 +8,21 @@ import { totalCartItems } from "../Logic/Logic";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import logo from "../images/logo.png";
 import { WishlistContext } from "../Store/WishlistContext";
+import { useFetch } from "../Hooks/useFetch";
+import Dropdown from "react-bootstrap/Dropdown";
+
+import Search from "./Search";
 
 const Header = () => {
   const ref = useRef(0);
-  const { items, token, setToken } = useContext(CartContext);
 
+  const { items, token, setToken } = useContext(CartContext);
   const { responsive } = useContext(WishlistContext);
   const itemsCount = totalCartItems(items);
   const [change, setChange] = useState(true);
+  const { data } = useFetch({ method: "get", type: "api/v1/products" });
+  const [searchResults, setSearchResults] = useState([]);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const changeBackground = () => {
@@ -30,6 +37,19 @@ const Header = () => {
   }, []);
 
   const id = useParams().id;
+
+  const search = (event) => {
+    if (event.target.value !== "") {
+      const search = data?.data?.data.filter((data) =>
+        data.description.includes(event.target.value)
+      );
+      setSearchResults(search);
+    } else setSearchResults([]);
+  };
+
+  window.addEventListener("click", (e) => {
+    e.target.name === "search" ? setShow(true) : setShow(false);
+  });
 
   return (
     <>
@@ -54,34 +74,30 @@ const Header = () => {
             <Offcanvas.Body>
               <Nav className="align-items-center justify-content-between flex-grow-1 pe-3">
                 <Nav className="w-50">
-                  <Navbar.Brand className="brand pointer">
-                    <NavLink
-                      className={`p-1 Nav-Link mt-1 pointer`}
-                      to={"/"}
-                      end
-                    >
-                      <img
-                        src={logo}
-                        alt="logo"
-                        width={130}
-                      />
+                  <Navbar.Brand className="brand pointer mx-3">
+                    <NavLink className={`Nav-Link pointer`} to={"/"} end>
+                      <img src={logo} alt="logo" width={125} />
                     </NavLink>
                   </Navbar.Brand>
-                  <NavLink className={`p-1 Nav-Link mt-1`} to={"/"} end>
+                  <NavLink className={`p-1 Nav-Link mt-2`} to={"/"} end>
                     Home
                   </NavLink>
 
-                  <NavLink className="p-1 Nav-Link mt-1" to={"/categories"}>
+                  <NavLink
+                    className="p-1 Nav-Link mt-2 mx-3"
+                    to={"/categories"}
+                  >
                     Categories
                   </NavLink>
 
-                  <NavLink className="p-1 Nav-Link mt-1" to={"/brands"}>
+                  <NavLink className="p-1 Nav-Link mt-2" to={"/brands"}>
                     Brands
                   </NavLink>
+
                   <NavLink
                     className={`${
                       id === undefined ? "Nav-Link" : "sub-color"
-                    } mt-1 p-1`}
+                    } mt-2 p-1 mx-3`}
                     to={"/products"}
                   >
                     Products
@@ -90,19 +106,25 @@ const Header = () => {
 
                 <Nav>
                   {token === null ? (
-                    <NavLink className="Nav-Link p-1 mt-1 me-5" to={"login"}>
+                    <NavLink
+                      className="Nav-Link login py-1 px-3 mt-2 me-5"
+                      to={"login"}
+                    >
                       Login
                     </NavLink>
                   ) : (
                     <Link
                       to={"../"}
-                      className={`p-1 mt-1 me-5 link`}
+                      className={`p-1 mt-1 me-5 link `}
                       onClick={() => {
                         setToken(null);
                         localStorage.removeItem("token");
                       }}
                     >
-                      logOut
+                      <button className="logOut py-1 px-3 border-0">
+                        {" "}
+                        Logout{" "}
+                      </button>
                     </Link>
                   )}
 
@@ -130,6 +152,9 @@ const Header = () => {
                       <path d="M156.9 70.5v118H8v-118h148.9m8-8H0v134h164.9v-134z"></path>
                     </svg>
                   </Link>
+
+                
+
                   <Link to={"../wishlist"} className={"text-center"}>
                     <i className="wishlist m-2 ms-3 p-1 fs-3 text-light fa-regular fa-heart">
                       <p className="wishlist-product-count">
@@ -145,8 +170,41 @@ const Header = () => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+
+      {searchResults.length !== 0 ? (
+        <Dropdown.Menu
+          className={`${change ? "" : "position-fixed"}`}
+          show={show}
+        >
+          {searchResults.map((item) => {
+            return (
+              <Link
+                className={"search-text"}
+                key={item.id}
+                to={`${
+                  id === undefined ? `/products/${item.id}` : `/products/${item.id}`
+                }`}
+              >
+                {item.description}
+              </Link>
+            );
+          })}
+        </Dropdown.Menu>
+      ) : (
+        ""
+      )}
     </>
   );
 };
 
 export default Header;
+//<Search change={change} product={searchResults} toggle={toggle}/>
+/*
+  <input
+                    className="search"
+                    id="search"
+                    name="search"
+                    type="text"
+                    onChange={search}
+                  />
+                  */

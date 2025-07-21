@@ -1,5 +1,6 @@
 .coverLoginPage{
   background-color: rgb(240, 240, 240) !important;
+  height: 100vh;
 }
 .icon_facebook{
     border-radius: 50%;

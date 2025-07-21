@@ -44,6 +44,7 @@ li {
   animation-name: animation-shadow;
   animation-duration: 5s;
   animation-iteration-count: infinite;
+  transition: all 1s;
   position: relative;
 }
 
@@ -53,7 +54,7 @@ li {
   animation-iteration-count: inherit;
   background-color: #d9dddf88;
 }
-.title {
+.title , .search-text {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -153,11 +154,14 @@ li {
     transition: all 0.5s;    
 }
 .Nav-Link:hover{
-    color:var(--secondary-color);
+    color:var(--secondary-color) !important;
 }
 .link,.active {
   text-decoration: none;
   color: var(--secondary-color) !important; 
+}
+.active:hover{
+    color: var(--secondary-color) !important; 
 }
 .cart{
   width:2rem;
@@ -171,8 +175,8 @@ li {
   height:100vh;
   color: #2c2121;
 }
-.content-brands ,.content-categories{
-  box-shadow: 1px 1px 3px #222;
+.card-brands ,.content-categories{
+  box-shadow: 0.1px 0.1px 0.1px 0.5px #222;
   width: 90%;
 }
 .formInputs{
@@ -191,7 +195,14 @@ li {
 .link{
   color: var(--sub-color) !important;
 }
-
+.logOut ,.login{
+    color:var(--main-color);
+    background-color: var(--sub-color) !important;
+    height: 2rem !important;
+    min-height: 2rem !important;
+    border-radius: 0.2rem;
+    font-weight: 600;
+}
 .favorite-product{
 position: absolute;
 bottom: 3.5rem ;
@@ -210,11 +221,25 @@ h2 {
 }
 
 
+.search-text{
+  color: var(--main-color);
+  width: 37rem !important;
+  text-decoration: none;
+  transition: all 1s;
+  padding: 0.3rem 0.7rem;
+  margin: auto;
+  color: var(--sub-color) !important;
+}
+.search-text:hover{
+  background-color: rgba(47, 47, 53, 0.24) !important;
+  width: 40rem;
+}
 
 .wishBtn{
   width: 6rem !important;
-  
 }
+
+
 
 
 .wishlist{
@@ -229,7 +254,19 @@ padding:0.3rem 0.4rem;
 border-radius: 50%;
 font-size: 11px;
 }
-
+.dropdown-item{
+  color: var(--sub-color) !important;
+}
+.dropdown-menu{
+  background-color: var(--main-color) !important;
+  width: 40rem !important;
+  height: 20rem !important;
+  overflow: auto !important;
+  margin-left: 2rem !important;
+  border: 0 !important;
+  z-index: 999999999;
+  top:4.2rem !important ;
+}
 
 .modal-dialog{
   width: 700px !important;
@@ -356,6 +393,12 @@ h6{
   width: 112% !important ;
   margin-left: -1rem;
 }
+
+
+.banner ,.banner2{
+    object-fit: cover;
+}
+
 
 @media screen and (max-width:567px){
   .offcanvas{
