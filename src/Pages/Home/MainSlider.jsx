@@ -10,7 +10,7 @@ import HomeSlider from "./HomeSlider";
 const MainSlider = () => {
   const mainImages = [slider_image_one, slider_image_two, slider_image_three];
   return (
-    <Fragment className='d-flex align-items-center h-75 bg-dark'>    
+    <Fragment>    
       <Col md={9} className="py-3">
         <HomeSlider
           slidesToShow={1}

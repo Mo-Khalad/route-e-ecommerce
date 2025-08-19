@@ -18,8 +18,6 @@ const DetailsProduct = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { addProductToCart } = useContext(CartContext);
   const id = useParams().id;
-
-  console.log(id);
   
   const getProducts = async (id) => {
     setLoading(true);

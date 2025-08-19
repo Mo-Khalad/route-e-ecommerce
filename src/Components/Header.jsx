@@ -8,10 +8,6 @@ import { totalCartItems } from "../Logic/Logic";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import logo from "../images/logo.png";
 import { WishlistContext } from "../Store/WishlistContext";
-import { useFetch } from "../Hooks/useFetch";
-import Dropdown from "react-bootstrap/Dropdown";
-
-import Search from "./Search";
 
 const Header = () => {
   const ref = useRef(0);
@@ -20,9 +16,6 @@ const Header = () => {
   const { responsive } = useContext(WishlistContext);
   const itemsCount = totalCartItems(items);
   const [change, setChange] = useState(true);
-  const { data } = useFetch({ method: "get", type: "api/v1/products" });
-  const [searchResults, setSearchResults] = useState([]);
-  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const changeBackground = () => {
@@ -37,19 +30,6 @@ const Header = () => {
   }, []);
 
   const id = useParams().id;
-
-  const search = (event) => {
-    if (event.target.value !== "") {
-      const search = data?.data?.data.filter((data) =>
-        data.description.includes(event.target.value)
-      );
-      setSearchResults(search);
-    } else setSearchResults([]);
-  };
-
-  window.addEventListener("click", (e) => {
-    e.target.name === "search" ? setShow(true) : setShow(false);
-  });
 
   return (
     <>
@@ -79,25 +59,25 @@ const Header = () => {
                       <img src={logo} alt="logo" width={125} />
                     </NavLink>
                   </Navbar.Brand>
-                  <NavLink className={`p-1 Nav-Link mt-2`} to={"/"} end>
+                  <NavLink className={`p-1 ms-3 Nav-Link mt-2`} to={"/"} end>
                     Home
                   </NavLink>
 
                   <NavLink
-                    className="p-1 Nav-Link mt-2 mx-3"
+                    className="p-1 ms-3 Nav-Link mt-2"
                     to={"/categories"}
                   >
                     Categories
                   </NavLink>
 
-                  <NavLink className="p-1 Nav-Link mt-2" to={"/brands"}>
+                  <NavLink className="p-1 ms-3 Nav-Link mt-2" to={"/brands"}>
                     Brands
                   </NavLink>
 
                   <NavLink
                     className={`${
                       id === undefined ? "Nav-Link" : "sub-color"
-                    } mt-2 p-1 mx-3`}
+                    } mt-2 ms-3 p-1 `}
                     to={"/products"}
                   >
                     Products
@@ -107,7 +87,7 @@ const Header = () => {
                 <Nav>
                   {token === null ? (
                     <NavLink
-                      className="Nav-Link login py-1 px-3 mt-2 me-5"
+                      className="Nav-Link login py-1 px-3 my-2 me-5"
                       to={"login"}
                     >
                       Login
@@ -121,14 +101,14 @@ const Header = () => {
                         localStorage.removeItem("token");
                       }}
                     >
-                      <button className="logOut py-1 px-3 border-0">
+                      <button className="logOut mb-2 py-1 px-3 border-0">
                         {" "}
                         Logout{" "}
                       </button>
                     </Link>
                   )}
 
-                  <Link to={"../cart"} className={"text-center"}>
+                  <Link to={"../cart"} className={"text-center mb-2"}>
                     <svg
                       className={`cart`}
                       xmlns="http://www.w3.org/2000/svg"
@@ -171,40 +151,8 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      {searchResults.length !== 0 ? (
-        <Dropdown.Menu
-          className={`${change ? "" : "position-fixed"}`}
-          show={show}
-        >
-          {searchResults.map((item) => {
-            return (
-              <Link
-                className={"search-text"}
-                key={item.id}
-                to={`${
-                  id === undefined ? `/products/${item.id}` : `/products/${item.id}`
-                }`}
-              >
-                {item.description}
-              </Link>
-            );
-          })}
-        </Dropdown.Menu>
-      ) : (
-        ""
-      )}
     </>
   );
 };
 
 export default Header;
-//<Search change={change} product={searchResults} toggle={toggle}/>
-/*
-  <input
-                    className="search"
-                    id="search"
-                    name="search"
-                    type="text"
-                    onChange={search}
-                  />
-                  */

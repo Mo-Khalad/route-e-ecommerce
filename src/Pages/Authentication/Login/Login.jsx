@@ -22,13 +22,13 @@ const Login = () => {
   });
 
   return (
-    <div className={`${Style.coverLoginPage} d-flex align-items-center`}>
+    <div className={`${Style.coverLoginPage} d-flex justify-content-center align-items-center`}>
       <Container>
         <Row>
           <Col md={12}>
             <div className="w-100 h-50 d-flex flex-wrap justify-content-center my-5">
-              <Col md={6} sm={12} xs={12}>
-                <div className="w-50 m-5 m-auto mt-5">
+              <Col lg={6} md={12} sm={8} xs={8}>
+                <div className="Login_form_content m-5 m-auto">
                   <h3 className="text-center fw-bold">Login</h3>
                   <FormComponentBM
                     detailsInputs={detailsInputs.filter(
@@ -41,7 +41,7 @@ const Login = () => {
                     validationSchema={validationSchema}
                     url={"api/v1/auth/signin"}
                     method={"post"}
-                    inputStyle={`input w-100 p-1 m-2 field mb-4`}
+                    inputStyle={`input w-100 p-1 m-1 field mb-4 fs-6`}
                     success={"../"}
                     btn={"login"}
                   />
@@ -64,7 +64,7 @@ const Login = () => {
                   </button>
                 </div>
               </Col>
-              <Col md={6} sm={12} xs={12}>
+              <Col lg={6} md={12} sm={12} xs={12}>
                 <div
                   className={`${Style.sign_text} d-flex flex-wrap align-items-center justify-content-center main-color`}
                 >

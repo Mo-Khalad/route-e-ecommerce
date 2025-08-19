@@ -72,15 +72,4 @@ else return <Loading/>
 
 };
 
-
-
-/*
- <h1></h1>
-    
-      <h1>categories</h1>
-      <h1>brands slider</h1>
-    //  <h1>Most Viewed slider</h1>
-      <h1>footer</h1>
-*/
-
 export default Home;

@@ -290,8 +290,14 @@ font-size: 11px;
   position: fixed;
   z-index: 999;
   background-color:var(--main-color) !important;
-  box-shadow: 0.5px 0.5px 5px 0.5px #222;
+  box-shadow: 0.5px 0.5px 5px 0.5px #222 
 }
+  
+.Login_form_content{
+  width: 60%;
+  margin-top: 2rem;
+}
+
 
 .m {
   border-bottom-color: rgb(
@@ -405,7 +411,25 @@ h6{
     position: fixed !important;
     z-index: 9999999 !important;
   }
+  
+.google_btn ,.facebook_btn{
+  font-size: 16px;
+  padding:0;
+  width:100%;
+  margin-top: 10px !important;
+  margin: auto;
 }
+
+.Login_form_content{
+  width: 100%;
+}
+input{
+  font-size: 30px;
+}
+
+}
+
+
 @media screen and (min-width:567px) and (max-width:767px) {
 .offcanvas{
   position: fixed !important;
@@ -414,6 +438,7 @@ h6{
 .brand{
   display:none !important;
 }
+
 }
 @keyframes animation-shadow {
   0% {

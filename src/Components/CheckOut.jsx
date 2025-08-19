@@ -49,7 +49,7 @@ return (
       validationSchema={validationSchema}
       url={`api/v1/orders/${cart_id?.data?.data?._id}`}
       method={"post"}
-      inputStyle={`formInputs`}
+      inputStyle={`formInputs mb-4`}
       success={"../"}
       token={token}
       btn={"check out"}
