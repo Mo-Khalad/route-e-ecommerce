@@ -12,8 +12,8 @@ const Deliveries = () => {
           <i className="text-info fa-solid fa-truck "></i>
         </li>
         <li>
-          <h6>Free Shipping</h6>
-          <h6>Free delivery over $500</h6>
+          <h6 className="deliveries-h6">Free Shipping</h6>
+          <h6 className="deliveries-h6">Free delivery over $500</h6>
         </li>
       </ul>
 
@@ -22,8 +22,8 @@ const Deliveries = () => {
           <i className="text-info fa-brands fa-wirsindhandwerk fs-3"></i>
         </li>
         <li>
-          <h6>Secure Shopping</h6>
-          <h6>Secured Payment Gateway</h6>
+          <h6 className="deliveries-h6">Secure Shopping</h6>
+          <h6 className="deliveries-h6">Secured Payment Gateway</h6>
         </li>
       </ul>
 
@@ -32,8 +32,8 @@ const Deliveries = () => {
           <i className="text-info fa-brands fa-slideshare fs-3"></i>
         </li>
         <li>
-          <h6>Free Returns</h6>
-          <h6>Hassle free returns</h6>
+          <h6 className="deliveries-h6">Free Returns</h6>
+          <h6 className="deliveries-h6">Hassle free returns</h6>
         </li>
       </ul>
     </Col>

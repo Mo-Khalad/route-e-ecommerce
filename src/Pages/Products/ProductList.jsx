@@ -13,7 +13,7 @@ const ProductList = ({ products, loading }) => {
       {products !== undefined &&
         products.length !== 0 &&
         products.map((product) => (
-          <Col lg={3} md={4} sm={6} xs={8} className="my-5" key={product.id}>
+          <Col lg={3} md={4} sm={6} xs={10} className="my-5" key={product.id}>
             <div className="w-100 p-2">
               <div className="my-2">
                 <div
