@@ -61,7 +61,7 @@ li {
   overflow: hidden;
 }
 .buyBtn {
-  width: 12rem;
+  width: 90%;
   margin-bottom: 1rem;
   transition: all 2s;
   z-index: 1;
@@ -419,16 +419,17 @@ h6{
   margin-top: 10px !important;
   margin: auto;
 }
-
 .Login_form_content{
   width: 100%;
 }
 input{
   font-size: 30px;
 }
-
+h6{
+  font-size: 9px !important;
 }
 
+}
 
 @media screen and (min-width:567px) and (max-width:767px) {
 .offcanvas{

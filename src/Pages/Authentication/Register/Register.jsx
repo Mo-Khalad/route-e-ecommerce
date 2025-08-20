@@ -47,7 +47,7 @@ const Register = () => {
                   validationSchema={validationSchema}
                   url={"api/v1/auth/signup"}
                   method={"post"}
-                  inputStyle={`${Style.formInputs} mb-3`}
+                  inputStyle={`${Style.formInputs} mb-4`}
                   success={"../login"}
                   btn={"register"}
                 />

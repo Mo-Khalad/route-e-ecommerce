@@ -67,7 +67,7 @@ useEffect(()=>{
     <div className={`${Style.cartCover}`}>
       <Container>
         <Row>
-          <Col md={9} className={`mt-5 mb-5 bg-light ${placeholder}`}>
+          <Col md={9} className={`mt-5 mb-5 bg-light ${placeholder} ${Style.empty}`}>
             <h3 className="h3 mt-2">my cart ({totalCart})</h3>
             <hr className="w-100"/>
             <div

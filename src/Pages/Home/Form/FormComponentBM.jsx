@@ -74,7 +74,7 @@ const FormComponentBM = (
                     />
                     <ErrorMessage name={name}>
                       {(errorMsg) => (
-                        <p style={{ color: "#962118", position:"absolute" , bottom:-20}}>{errorMsg}</p>
+                        <p style={{ color: "#962118", position:"absolute" , bottom:-20 }}>{errorMsg}</p>
                       )}
                     </ErrorMessage>
                   </div>

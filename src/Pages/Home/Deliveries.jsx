@@ -3,7 +3,8 @@ import { Col } from "react-bootstrap";
 
 const Deliveries = () => {
   return (
-    <Col md={12}
+    <Col
+      md={12}
       className="w-100 bg-dark my-5 p-4 text-light d-flex justify-content-around flex-wrap"
     >
       <ul className="d-flex flex-wrap justify-content-around p-3 align-items-center">

@@ -22,13 +22,14 @@ const Login = () => {
   });
 
   return (
-    <div className={`${Style.coverLoginPage} d-flex justify-content-center align-items-center`}>
+    <div className={`${Style.coverLoginPage} d-flex justify-content-center align-items-center w-100`}>
       <Container>
         <Row>
           <Col md={12}>
             <div className="w-100 h-50 d-flex flex-wrap justify-content-center my-5">
-              <Col lg={6} md={12} sm={8} xs={8}>
-                <div className="Login_form_content m-5 m-auto">
+          
+              <Col lg={6} md={6} sm={8} xs={8}>
+                <div className="Login_form_content m-1 m-auto">
                   <h3 className="text-center fw-bold">Login</h3>
                   <FormComponentBM
                     detailsInputs={detailsInputs.filter(
@@ -64,15 +65,15 @@ const Login = () => {
                   </button>
                 </div>
               </Col>
+
               <Col lg={6} md={12} sm={12} xs={12}>
                 <div
                   className={`${Style.sign_text} d-flex flex-wrap align-items-center justify-content-center main-color`}
                 >
                   <img
-                    className={"mt-1 mb-5"}
+                    className={"mt-1 mb-5 w-100"}
                     src={loginImage}
                     alt="img"
-                    width={450}
                   />
                 </div>
               </Col>
@@ -82,5 +83,7 @@ const Login = () => {
       </Container>
     </div>
   );
+
+  
 };
 export default Login;

@@ -28,7 +28,7 @@ const Categories = () => {
               <div className="d-flex flex-wrap justify-content-around p-5 align-items-center ">
                 {data?.data?.data?.length !== 0 &&
                   data?.data?.data.map((product)=> (
-                    <Col lg={3} md={4} sm={6} xs={6} key={product._id}>
+                    <Col lg={3} md={4} sm={12} xs={12} key={product._id}>
                       <div
                         className="my-3 card m-2"
                       >

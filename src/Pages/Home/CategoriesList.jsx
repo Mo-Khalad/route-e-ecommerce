@@ -30,7 +30,7 @@ const CategoriesList = ({ products , listProducts, setListProducts }) => {
   return (
     <Col md={12} className="my-5">
       <div className="d-flex flex-wrap">
-        <Col md={4} sm={6} xs={6}>
+        <Col md={4} sm={12} xs={12}>
           <button
             className={`bg-dark p-3 w-100 ${
               listProducts[0]?.category.name === "Women's Fashion"
@@ -42,7 +42,7 @@ const CategoriesList = ({ products , listProducts, setListProducts }) => {
             Women's Fashion
           </button>
         </Col>
-        <Col md={4} sm={6} xs={6}>
+        <Col md={4} sm={6} xs={12}>
           <button
             className={`bg-dark p-3 w-100 ${
               listProducts[0]?.category.name === "Men's Fashion"
@@ -55,7 +55,7 @@ const CategoriesList = ({ products , listProducts, setListProducts }) => {
           </button>
         </Col>
 
-        <Col md={4} sm={6} xs={6}>
+        <Col md={4} sm={6} xs={12}>
           <button
             className={`bg-dark p-3 w-100 ${
               listProducts[0]?.category.name === "Electronics"
