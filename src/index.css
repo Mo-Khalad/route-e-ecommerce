@@ -66,6 +66,7 @@ li {
   transition: all 2s;
   z-index: 1;
   position: relative;
+  left: 5%;
   font-size: inherit;
   font-family: inherit;
   background-color:var(--sub-color) !important;
@@ -399,19 +400,19 @@ h6{
   width: 112% !important ;
   margin-left: -1rem;
 }
-
-
 .banner ,.banner2{
     object-fit: cover;
 }
-
-
+.not-found{
+  height: 100vh;
+  overflow: hidden;
+}
 @media screen and (max-width:567px){
   .offcanvas{
     position: fixed !important;
     z-index: 9999999 !important;
   }
-  
+  .buyBtn
 .google_btn ,.facebook_btn{
   font-size: 16px;
   padding:0;
@@ -425,7 +426,7 @@ h6{
 input{
   font-size: 30px;
 }
-h6{
+.h6{
   font-size: 9px !important;
 }
 

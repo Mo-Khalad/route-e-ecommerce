@@ -13,13 +13,13 @@ const ProductList = ({ products, loading }) => {
       {products !== undefined &&
         products.length !== 0 &&
         products.map((product) => (
-          <Col lg={3} md={6} sm={6} xs={11} className="my-5" key={product.id}>
+          <Col lg={3} md={4} sm={6} xs={8} className="my-5" key={product.id}>
             <div className="w-100 p-2">
               <div className="my-2">
                 <div
-                  className={`${
-                    loading ? "placeholder " : ""
-                  }  product-layout d-flex flex-wrap justify-content-between align-items-center rounded-1`}
+                  className={`${ 
+                    loading ? "placeholder" : ""
+                  }  product-layout rounded-1 `}
                 >
                   <NavLink
                     className="p-1 Nav-Link"
@@ -62,7 +62,7 @@ const ProductList = ({ products, loading }) => {
                   </svg>
                   <h6 className="ms-3">${product.price}</h6>
                   <button
-                    className="buyBtn py-1 mb-3 px-3 m-auto border-0 "
+                    className="buyBtn py-1 mb-3 px-3 border-0 "
                     onClick={() => {
                       addProductToCart(product);
                     }}
