@@ -42,7 +42,7 @@ const MostViewed = ({ mostViewedProducts }) => {
 
                     <div>
                       <h6 className="title ms-3">{product.category.name}</h6>
-                      <span className="me-5">${product.price}</span>
+                      <span>${product.price}</span>
                       <i
                         className={`fa-solid fa-cart-shopping ms-5 cart-shopping ${Style.cart_shopping}`}
                         onClick={() => {

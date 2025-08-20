@@ -62,7 +62,7 @@ const ProductList = ({ products, loading }) => {
                   </svg>
                   <h6 className="ms-3">${product.price}</h6>
                   <button
-                    className="buyBtn py-1 mb-3 px-3 border-0 "
+                    className="buyBtn left py-1 mb-3 px-3 border-0 "
                     onClick={() => {
                       addProductToCart(product);
                     }}
