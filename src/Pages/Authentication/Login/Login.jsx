@@ -21,23 +21,24 @@ const Login = () => {
     password: password,
   });
 
+  const userData = ["email", "password"];
+  const filterData = detailsInputs.filter((detailsInput) =>
+    userData.includes(detailsInput.name)
+  );
+
   return (
-    <div className={`${Style.coverLoginPage} d-flex justify-content-center align-items-center w-100`}>
+    <div
+      className={`${Style.coverLoginPage} d-flex justify-content-center align-items-center w-100`}
+    >
       <Container>
         <Row>
           <Col md={12}>
             <div className="w-100 h-50 d-flex flex-wrap justify-content-center my-5">
-          
               <Col lg={6} md={6} sm={8} xs={8}>
                 <div className="Login_form_content m-1 m-auto">
                   <h3 className="text-center fw-bold">Login</h3>
                   <FormComponentBM
-                    detailsInputs={detailsInputs.filter(
-                      ( detailsInput) =>
-                        ( detailsInput.name === "email" ||
-                          detailsInput.name === "password") &&
-                        detailsInput
-                    )}
+                    detailsInputs={filterData}
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     url={"api/v1/auth/signin"}
@@ -83,7 +84,5 @@ const Login = () => {
       </Container>
     </div>
   );
-
-  
 };
 export default Login;

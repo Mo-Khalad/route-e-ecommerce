@@ -53,4 +53,5 @@ const HomeSlider = ({
 
   return <Slider {...settings}>{children}</Slider>;
 };
+
 export default HomeSlider;
