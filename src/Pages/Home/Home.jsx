@@ -60,7 +60,7 @@ if (!loading){
               listProducts={listProducts}
               setListProducts={setListProducts}
             />
-            <SomeProducts listProducts={mostViewedProducts} />
+            <SomeProducts listProducts={mostViewedProducts} /> 
             <MostViewed mostViewedProducts={mostViewedProducts} />
           </Row>
         </Container>
@@ -68,7 +68,8 @@ if (!loading){
     </>
   );
 }
-else return <Loading/>
+ else return <Loading/>
+  
 
 };
 

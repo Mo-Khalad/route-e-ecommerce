@@ -4,9 +4,9 @@ import * as Yup from "yup";
 import { detailsInputs } from "../../Register/DetailsInputs.js";
 import { Col, Container, Row } from "react-bootstrap";
 import Style from "../Authentication.module.css";
-import loginImage from "../../../images/log.webp";
-import iconGoogle from "../../../images/icon-google.png";
-import iconFacebook from "../../../images/icon-facebook.png";
+import loginImage from "../../../images/laptop.webp";
+import iconGoogle from "../../../images/icon-google.webp";
+import iconFacebook from "../../../images/icon-facebook.webp";
 import { Link } from "react-router-dom";
 
 const Login = () => {

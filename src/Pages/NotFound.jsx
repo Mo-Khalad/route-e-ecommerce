@@ -1,5 +1,5 @@
 import React from 'react'
-import image404 from './../images/404.jpg'
+import image404 from './../images/404.webp'
 const NotFound = () => {
   return (
     <div className='not-found d-flex justify-content-center align-items-center w-100'>

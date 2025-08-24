@@ -1,14 +1,9 @@
 import React, { Fragment } from "react";
-import slider_image_one from "../../images/slider-image-1.jpeg";
-import slider_image_two from "../../images/slider-image-2.jpeg";
-import slider_image_three from "../../images/slider-image-3.jpeg";
 import { Col } from "react-bootstrap";
-import banner from "../../images/grocery-banner.jpeg";
-import banner2 from "../../images/banner-2 (2).jpg";
 import HomeSlider from "./HomeSlider";
 
 const MainSlider = () => {
-  const mainImages = [slider_image_one, slider_image_two, slider_image_three];
+  const mainImages = [ "/images/slider-image-2.webp", "/images/slider-image-1.webp", "/images/slider-image-3.webp"];
   return (
     <Fragment>    
       <Col md={9} className="py-3">
@@ -24,7 +19,7 @@ const MainSlider = () => {
           {mainImages.map((images) => {
             return (
               <div key={images}>
-                <img src={images} alt={images} className="w-100" height={500} />
+                <img src={images} alt={images} width={"100%"} height={500} />
               </div>
             );
           })}
@@ -33,11 +28,11 @@ const MainSlider = () => {
 
       <Col>
         <div className="mt-4 me-1">
-          <img src={banner} alt="banner" className="banner w-100 m-2" height={225} />
+          <img src="/images/grocery-banner.webp" alt="banner" className="banner w-100 m-2" height={225} />
         </div>
 
         <div className="me-1">
-          <img src={banner2} alt="banner2" className="banner2 w-100 m-2" height={225} />
+          <img src="/images/banner-2.webp" alt="banner2" className="banner2 w-100 m-2" height={225} />
         </div>
       </Col>
     </Fragment>

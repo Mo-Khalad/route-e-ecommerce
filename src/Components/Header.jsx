@@ -6,12 +6,10 @@ import { Link, NavLink, useParams } from "react-router-dom";
 import { CartContext } from "../Store/CartContext";
 import { totalCartItems } from "../Logic/Logic";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import logo from "../images/logo.png";
 import { WishlistContext } from "../Store/WishlistContext";
 
 const Header = () => {
   const ref = useRef(0);
-
   const { items, token, setToken } = useContext(CartContext);
   const { responsive } = useContext(WishlistContext);
   const itemsCount = totalCartItems(items);
@@ -39,8 +37,8 @@ const Header = () => {
         className={change ? "navbar w-100" : "active_Nav position-fixed w-100"}
       >
         <Container fluid>
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"md"}`} />
-
+      
+      <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"md"}`} />  
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${"md"}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${"md"}`}
@@ -48,15 +46,16 @@ const Header = () => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                <img src={logo} alt="logo" />
+               
               </Offcanvas.Title>
             </Offcanvas.Header>
+
             <Offcanvas.Body>
               <Nav className="align-items-center justify-content-between flex-grow-1 pe-3">
                 <Nav className="w-50">
                   <Navbar.Brand className="brand pointer mx-3">
                     <NavLink className={`Nav-Link pointer`} to={"/"} end>
-                      <img src={logo} alt="logo" width={125} />
+                        <img src="/images/logo.webp" alt="logo" width={125} fetchPriority="high"/>    
                     </NavLink>
                   </Navbar.Brand>
                   <NavLink className={`p-1 ms-3 Nav-Link mt-2`} to={"/"} end>
@@ -102,8 +101,7 @@ const Header = () => {
                       }}
                     >
                       <button className="logOut mb-2 py-1 px-3 border-0">
-                        {" "}
-                        Logout{" "}
+                        Logout
                       </button>
                     </Link>
                   )}
@@ -133,8 +131,6 @@ const Header = () => {
                     </svg>
                   </Link>
 
-                
-
                   <Link to={"../wishlist"} className={"text-center"}>
                     <i className="wishlist m-2 ms-3 p-1 fs-3 text-light fa-regular fa-heart">
                       <p className="wishlist-product-count">
@@ -150,7 +146,6 @@ const Header = () => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-
     </>
   );
 };
