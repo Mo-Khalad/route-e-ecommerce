@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from "../Store/CartContext";
-import FormComponentBM from "../Pages/Home/Form/FormComponentBM";
-import { detailsInputs } from "../Pages/Register/DetailsInputs";
+import { CartContext } from "../../Store/CartContext";
+import FormComponentBM from "../../Components/Form/FormComponentBM.jsx";
+import { detailsInputs } from "../../Logic/DetailsInputs.js";
 import { Col, Container, Row } from "react-bootstrap";
 import * as Yup from "yup";
-import { useValidation } from "../Hooks/useValidation";
-import Loading from "./Loading";
-
+import { useValidation } from "../../Hooks/useValidation";
+import Loading from "../../Components/Loading";
 
 const CheckOut = () => {
   const [loading , setLoading] =useState(false)

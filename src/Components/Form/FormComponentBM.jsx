@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useContext } from "react";
-import { mainFormHandlerTypeRaw } from "../../../util/http";
-import { CartContext } from "../../../Store/CartContext.jsx";
-import Button from "../../../Components/Ui/Button.jsx";
+import { mainFormHandlerTypeRaw } from "../../util/http.jsx";
+import { CartContext } from "../../Store/CartContext.jsx";
+import Button from "../Ui/Button.jsx";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 
@@ -50,6 +50,7 @@ const FormComponentBM = ({
       navigate(success);
     fetchCart();
   };
+  
   return (
     <>
       <Formik
@@ -109,7 +110,7 @@ const FormComponentBM = ({
       </Formik>
 
       {message?.response?.data?.message !== undefined && (
-        <h5 style={{ color: "#962118" }}>{message?.response?.data?.message}</h5>
+        <h5 style={{ color: "#962118" , fontSize:15}}>{message?.response?.data?.message}</h5>
       )}
     </>
   );

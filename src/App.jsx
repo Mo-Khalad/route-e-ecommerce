@@ -12,9 +12,9 @@ import DetailsProduct from "./Pages/DetailsProduct/DetailsProduct.jsx";
 import { CartContext } from "./Store/CartContext.jsx";
 import { ToastContainer, Zoom } from "react-toastify";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
-import CheckOut from "./Components/CheckOut.jsx";
+import CheckOut from "./Pages/CheckOut/CheckOut.jsx";
 import Wishlist from "./Pages/Wishlist/Wishlist.jsx";
-import NotFound from "./Pages/NotFound.jsx";
+import NotFound from "./Pages/NotFound/NotFound.jsx";
 
 
 const router = createBrowserRouter([

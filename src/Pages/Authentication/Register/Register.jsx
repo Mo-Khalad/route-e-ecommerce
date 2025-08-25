@@ -1,6 +1,6 @@
 import { useValidation } from "../../../Hooks/useValidation.js";
-import FormComponentBM from "../../Home/Form/FormComponentBM.jsx";
-import { detailsInputs } from "../../Register/DetailsInputs.js";
+import FormComponentBM from "../../../Components/Form/FormComponentBM.jsx";
+import { detailsInputs } from "../../../Logic/DetailsInputs.js";
 import * as Yup from "yup";
 import Style from "../Authentication.module.css";
 import { Col, Container, Row } from "react-bootstrap";
