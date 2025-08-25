@@ -4,6 +4,7 @@ import HomeSlider from "./HomeSlider";
 
 const MainSlider = () => {
   const mainImages = [ "/images/slider-image-2.webp", "/images/slider-image-1.webp", "/images/slider-image-3.webp"];
+
   return (
     <Fragment>    
       <Col md={9} className="py-3">
