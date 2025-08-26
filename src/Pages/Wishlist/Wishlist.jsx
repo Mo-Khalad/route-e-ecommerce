@@ -5,8 +5,9 @@ import Style from "./Wishlist.module.css";
 import { WishlistContext } from "../../Store/WishlistContext";
 import Loading from "../../Components/Loading";
 const Wishlist = () => {
-  const { addProductToCart } = useContext(CartContext);
+  const { addProductToCart , token} = useContext(CartContext);
   const { removeToWishlist , responsive , loading } = useContext(WishlistContext);
+
 
   if (!loading) {
     return (
@@ -17,7 +18,7 @@ const Wishlist = () => {
               <div
                 className={`${Style.cartItems} bg-light mt-5 d-flex flex-wrap justify-content-between align-items-center w-100`}
               >
-                {responsive?.data?.data.length >= 0 &&
+                {( responsive?.data?.data.length >= 0 && token !== null )&&
                 (responsive?.data?.data !== undefined &&
                   responsive?.data?.data.length) !== 0 ? (
                   responsive?.data?.data.map((product) => {
