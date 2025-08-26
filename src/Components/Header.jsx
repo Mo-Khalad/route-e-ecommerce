@@ -134,7 +134,7 @@ const Header = () => {
                   <Link to={"../wishlist"} className={"text-center"}>
                     <i className="wishlist m-2 ms-3 p-1 fs-3 text-light fa-regular fa-heart">
                       <p className="wishlist-product-count">
-                        {responsive?.data?.data.length !== undefined
+                        {( responsive?.data?.data.length!== undefined && token !== null )
                           ? responsive?.data?.data.length
                           : 0}
                       </p>
