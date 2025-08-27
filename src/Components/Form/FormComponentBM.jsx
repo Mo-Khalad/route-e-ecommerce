@@ -36,7 +36,7 @@ const FormComponentBM = ({
       setMessage("");
     }, 3000);
 
-    if (token === undefined && url === "api/v1/auth/signin") {
+    if (token === undefined && url === "api/v1/auth/signin") {            
       localStorage.setItem("token", JSON.stringify(responsive?.data.token));
       setToken(responsive?.data.token);
     }

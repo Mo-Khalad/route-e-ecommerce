@@ -4,7 +4,7 @@ import { mainFormHandlerTypeRaw } from "../util/http";
 export const useFetch = ({method , type , fromData='' , token})=>{     
    const [data , setData] = useState()
    const [loading , setLoading] = useState(false)
-
+   
   useEffect(()=> { 
     
     const getSpecificCategories = async()=>{

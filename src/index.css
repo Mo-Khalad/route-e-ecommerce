@@ -51,11 +51,14 @@ li {
   animation-iteration-count: inherit;
   background-color: #d9dddf88;
 }
-.title , .search-text {
+.title , .search-text , .order-titl  {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.order-title {
+  font-size: 1rem;
 }
 .buyBtn {
   width: 90%;
@@ -361,6 +364,7 @@ h6{
   height: 100vh;
   overflow: hidden;
 }
+
 @media screen and (max-width:567px){
   .offcanvas{
     position: fixed !important;

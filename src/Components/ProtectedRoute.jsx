@@ -5,11 +5,16 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const { token } = useContext(CartContext);
 
-  if (token !== null) {
-    if (children.type.name === "Login" || children.type.name === "Register") {
-      return <Navigate to="../"/>;
+  if (token !== null ) {
+    if (children.type.name === "Login" || children.type.name === "Register" ) {
+      return <Navigate to="../"/>
     }
-  }else return children
+  }
+  
+  else{ 
+  if ( children.type.name === "ShowAllOrders" ) return <Navigate to="../"/>
+   else return children
+  } return children
 
 };
 

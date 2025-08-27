@@ -15,22 +15,30 @@ import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 import CheckOut from "./Pages/CheckOut/CheckOut.jsx";
 import Wishlist from "./Pages/Wishlist/Wishlist.jsx";
 import NotFound from "./Pages/NotFound/NotFound.jsx";
-
+import ShowAllOrders from "./Pages/ShowAllOrders/ShowAllOrders.jsx";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <Layout />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "brands", element: <Brands />},
-      { path: "products", element: <Products />},
-      { path: "cart",  element: <Cart /> },
+      { path: "brands", element: <Brands /> },
+      { path: "products", element: <Products /> },
+      { path: "cart", element: <Cart /> },
       { path: "categories", element: <Categories /> },
       { path: "products/:id", element: <DetailsProduct /> },
       { path: "checkout", element: <CheckOut /> },
-      { path:"Wishlist" , element:<Wishlist/> ,} , 
+      {
+        path: "allOrders",
+        element: (
+          <ProtectedRoute>
+            <ShowAllOrders />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "Wishlist", element: <Wishlist /> },
       {
         path: "/login",
         element: (
@@ -51,8 +59,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-
 const App = () => {
   const { fetchCart } = useContext(CartContext);
 
@@ -61,8 +67,8 @@ const App = () => {
   }, [fetchCart]);
 
   useEffect(() => {
-    callFetchCart();    
-  }, [callFetchCart ]);
+    callFetchCart();
+  }, [callFetchCart]);
 
   return (
     <>

@@ -14,7 +14,8 @@ const CheckOut = () => {
     setTimeout( ()=>
       {setLoading(false)} , [1000])
 } , [])
-  const { token , cart_id } =useContext(CartContext)
+  const { token , cart_id } =useContext(CartContext)  
+    localStorage.setItem( "id" , JSON.stringify( cart_id?.data?.data?.cartOwner ) )
 
   const initialValues = {
     details: "",
@@ -49,7 +50,7 @@ return (
       url={`api/v1/orders/${cart_id?.data?.data?._id}`}
       method={"post"}
       inputStyle={`formInputs mb-4`}
-      success={"../"}
+      success={"../allOrders"}
       token={token}
       btn={"check out"}
     />

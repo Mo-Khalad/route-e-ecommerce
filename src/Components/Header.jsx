@@ -10,7 +10,7 @@ import { WishlistContext } from "../Store/WishlistContext";
 
 const Header = () => {
   const ref = useRef(0);
-  const { items, token, setToken } = useContext(CartContext);
+  const { items , token, setToken } = useContext(CartContext);
   const { responsive } = useContext(WishlistContext);
   const itemsCount = totalCartItems(items);
   const [change, setChange] = useState(true);

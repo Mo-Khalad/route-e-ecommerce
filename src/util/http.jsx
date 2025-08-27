@@ -7,7 +7,7 @@ method,
 type ,
 fromData ,
 token ,
-count 
+count ,
 }
 )=>{
 let headers ={

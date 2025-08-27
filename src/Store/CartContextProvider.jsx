@@ -1,4 +1,4 @@
-import React, { useCallback , useReducer, useState } from "react";
+import React, { useCallback , useReducer , useState } from "react";
 import { mainFormHandlerTypeRaw } from "../util/http";
 import { CartContext } from "./CartContext.jsx";
 import { toast } from "react-toastify";
@@ -99,7 +99,8 @@ const CartContextProvider = ({ children }) => {
   const [cart , dispatchCartAction] = useReducer( handleProductReducer, {
     items: [],
   });
-  const [cart_id , setCart_id] = useState()
+  
+  const [cart_id , setCart_id ] = useState()
   const [placeholder, setPlaceholder] = useState("");
 
   const notifySuccess = (text) => {
@@ -166,6 +167,7 @@ const CartContextProvider = ({ children }) => {
       type: URL_CART,
       token:  token ,
     });    
+    
     setCart_id(data)
     dispatchCartAction({
       type: "INIT_CART",
