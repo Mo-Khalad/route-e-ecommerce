@@ -43,7 +43,7 @@ const Login = () => {
                     validationSchema={validationSchema}
                     url={"api/v1/auth/signin"}
                     method={"post"}
-                    inputStyle={`input w-100 p-1 m-1 field mb-4 fs-6`}
+                    inputStyle={`input w-100 p-1 m-1 mb-4 field fs-6`}
                     success={"../"}
                     btn={"login"}
                   />

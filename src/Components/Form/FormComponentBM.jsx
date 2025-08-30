@@ -78,11 +78,12 @@ const FormComponentBM = ({
                       />
                       <ErrorMessage name={name}>
                         {(errorMsg) => (
-                          <p
+                          <p 
                             style={{
                               color: "#962118",
                               position: "absolute",
                               bottom: -20,
+                              paddingBottom:3,
                             }}
                           >
                             {errorMsg}
@@ -110,7 +111,7 @@ const FormComponentBM = ({
       </Formik>
 
       {message?.response?.data?.message !== undefined && (
-        <h5 style={{ color: "#962118" , fontSize:15}}>{message?.response?.data?.message}</h5>
+        <h5 className="content-h5" style={{ color: "#962118" , fontSize:15}}>{message?.response?.data?.message}</h5>
       )}
     </>
   );

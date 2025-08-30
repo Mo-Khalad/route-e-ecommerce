@@ -3,7 +3,7 @@ import { useFetch } from "../../Hooks/useFetch";
 import { Container, Row, Col } from "react-bootstrap";
 import Loading from "../../Components/Loading.jsx";
 import Style from './ShowAllOrders.module.css'
-const ShowAllOrders = () => {
+const ShowAllOrders= () => {
  const id = JSON.parse(localStorage.getItem("id")) 
  
 const method = id === null ?'' : "get" 
