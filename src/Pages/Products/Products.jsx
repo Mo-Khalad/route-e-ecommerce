@@ -23,8 +23,8 @@ const Products = () => {
     getProducts();
   }, []);
 
-  if (!loading) {
-    if (products.statusText === "OK") {
+  if (!loading) {    
+    if (products.status === 200) {      
       const PRODUCT_PER_PAGE = 12;
       const pages = Math.ceil(products?.data?.data.length / PRODUCT_PER_PAGE);
       const startIndex = (currentPage - 1) * PRODUCT_PER_PAGE;
@@ -33,7 +33,7 @@ const Products = () => {
         startIndex,
         finishIndex
       );
-
+    
       return (
         <>
           <>

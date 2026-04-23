@@ -69,13 +69,13 @@ const CategoriesList = ({ products , listProducts, setListProducts }) => {
         </Col>
       </div>
 
-      <HomeSlider slidesToShow={4} lg={3} md={2} sm={1} speed={4000}>
+      <HomeSlider slidesToShow={3} md={2} sm={1} speed={4000}>
         {listProducts.length !== 0 &&
           listProducts.map((product) => (
             <div className="w-100 mb-5" key={product.id}>
               <div className="p-4">
                 <div className="product-layout position-relative d-flex flex-wrap justify-content-between mt-3 align-items-center rounded-1">
-                  <div className="w-100">
+                  <div className="w-100 card-image">
                     <Link to={`/products/${product.id}`}>
                       <img
                         className="w-100"

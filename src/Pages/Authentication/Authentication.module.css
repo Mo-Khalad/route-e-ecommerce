@@ -1,6 +1,6 @@
 .coverLoginPage{
    background-color: rgb(240, 240, 240) !important;
-   min-height: 100vh;
+   min-height: 100%;
 }
 .icon_facebook{
     border-radius: 50%;
@@ -9,11 +9,6 @@
     width: 60%;
     border-radius:2.5rem;
     overflow: hidden;
-}
-.sign_tex{
-    background-color: rgba(17, 17, 29, 0.116);
-    width: 60%;
-    height: 100%;
 }
 .sign_inputs{
     width: 40%;

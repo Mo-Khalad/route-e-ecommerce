@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import { WishlistContext } from "../../Store/WishlistContext";
 
 const ProductList = ({ products, loading }) => {
+  console.log(products);
+  
   const { addProductToCart } = useContext(CartContext);
   const { addToWishlist, removeToWishlist, wishlistProduct } =
     useContext(WishlistContext);
@@ -13,7 +15,7 @@ const ProductList = ({ products, loading }) => {
       {products !== undefined &&
         products.length !== 0 &&
         products.map((product) => (
-          <Col lg={3} md={4} sm={6} xs={10} className="my-5" key={product.id}>
+          <Col lg={4} md={6} sm={11} className="my-5" key={product.id}>
             <div className="w-100 p-2">
               <div className="my-2">
                 <div
@@ -21,17 +23,19 @@ const ProductList = ({ products, loading }) => {
                     loading ? "placeholder" : ""
                   }  product-layout rounded-1 `}
                 >
-                  <NavLink
-                    className="p-1 Nav-Link"
-                    to={`/products/${product.id}`}
-                  >
-                    <img
-                      src={product.imageCover}
-                      className="w-100 "
-                      alt={product.title}
-                      height={400}
-                    />
-                  </NavLink>
+               <div className='card-image h-100'>
+                    <NavLink
+                      className="p-1 Nav-Link"
+                      to={`/products/${product.id}`}
+                    >
+                      <img
+                        src={product.imageCover}
+                        className="w-100"
+                        alt={product.title}
+                      />                   
+                    </NavLink>
+                  </div>
+
                   <h5 className="mx-3 mt-2">{product.category.name}</h5>
                   <p className="title ms-3">{product.title}</p>
                   <svg

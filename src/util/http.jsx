@@ -16,8 +16,9 @@ let headers ={
  
 let response= null;
 try{
-if(method==="get"){  
+if(method==="get"){    
   response= await axios.get(`${baseServerUrl}${type}`, {headers})  
+  console.log(response);
 }
 
 else if(method==="post"){

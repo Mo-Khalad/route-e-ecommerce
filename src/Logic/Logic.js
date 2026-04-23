@@ -8,5 +8,5 @@ export const totalPriceProducts=(item)=>{
 }
 export const totalCartItems = (items)=>items.reduce((totalNumberOfItems, CartItem) => {
     return ( totalNumberOfItems + CartItem.count );
-  }, 0);
+}, 0);
   

@@ -67,9 +67,9 @@ const Login = () => {
                 </div>
               </Col>
 
-              <Col lg={6} md={12} sm={12} xs={12}>
+              <Col lg={6} md={12} sm={12}>
                 <div
-                  className={`${Style.sign_text} d-flex flex-wrap align-items-center justify-content-center main-color`}
+                  className={`d-flex flex-wrap align-items-center justify-content-center main-color`}
                 >
                   <img
                     className={"mt-1 mb-5 w-100"}

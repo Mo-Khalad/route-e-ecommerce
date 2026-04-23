@@ -33,8 +33,8 @@ const Register = () => {
     <>
       <div className={Style.coverLoginPage}>
         <Container>
-          <Row className={`d-flex justify-content-center`}>
-            <Col md={6}>
+          <Row className={`d-flex justify-content-center align-items-center h-100`}>
+            <Col sm={12} md={6}>
               <div className="bg-light p-2 m-5">
                 <h4 className="text-center fw-bold">Register</h4>
                 <FormComponentBM
